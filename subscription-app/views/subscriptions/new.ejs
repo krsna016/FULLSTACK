@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Subscription</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Create New Subscription</h2>
+        <form action="/subscriptions" method="POST" novalidate>
+            <div class="form-group">
+                <label for="plan">Plan</label>
+                <input type="text" class="form-control" id="plan" name="plan" value="Basic" readonly>
+            </div>
+            <div class="form-group">
+                <label for="name">Subscriber Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+                <div class="invalid-feedback">
+                    Please enter a subscriber name.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Subscriber Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <div class="invalid-feedback">
+                    Please enter a valid email address.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" class="form-control" id="startDate" name="startDate" required>
+                <div class="invalid-feedback">
+                    Please select a start date.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="endDate">End Date</label>
+                <input type="date" class="form-control" id="endDate" name="endDate" required>
+                <div class="invalid-feedback">
+                    Please select an end date.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Subscription</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Client-side validation
+        (function () {
+            'use strict'
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation')
+                for (var i = 0; i < forms.length; i++) {
+                    forms[i].addEventListener('submit', function (event) {
+                        if (this.checkValidity() === false) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        this.classList.add('was-validated')
+                    }, false)
+                }
+            }, false)
+        })();
+    </script>
+</body>
+</html>

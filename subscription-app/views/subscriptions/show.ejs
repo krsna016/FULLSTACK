@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Details</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Subscription Details</h1>
+        <div class="subscription-details">
+            <h2><%= subscription.plan %></h2>
+            <p><strong>Start Date:</strong> <%= subscription.startDate.toDateString() %></p>
+            <p><strong>End Date:</strong> <%= subscription.endDate.toDateString() %></p>
+            <p><strong>Status:</strong> <%= subscription.status %></p>
+            <p><strong>Description:</strong> <%= subscription.description %></p>
+        </div>
+        <div class="actions">
+            <a href="/subscriptions/<%= subscription._id %>/edit" class="btn btn-primary">Edit</a>
+            <form action="/subscriptions/<%= subscription._id %>/delete" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            <a href="/subscriptions" class="btn btn-secondary">Back to Subscriptions</a>
+        </div>
+    </div>
+</body>
+</html>

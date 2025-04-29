@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscriptions</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('../layouts/header.ejs') %>
+    
+    <div class="container">
+        <h1>Subscriptions</h1>
+        <a href="/subscriptions/new" class="btn btn-primary">Create New Subscription</a>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Plan</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% subscriptions.forEach(function(subscription) { %>
+                    <tr>
+                        <td><%= subscription.plan %></td>
+                        <td><%= subscription.startDate.toDateString() %></td>
+                        <td><%= subscription.endDate.toDateString() %></td>
+                        <td>
+                            <a href="/subscriptions/<%= subscription._id %>" class="btn btn-info">Show</a>
+                            <a href="/subscriptions/<%= subscription._id %>/edit" class="btn btn-warning">Edit</a>
+                            <form action="/subscriptions/<%= subscription._id %>/delete" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <%- include('../layouts/footer.ejs') %>
+    <script src="/js/scripts.js"></script>
+</body>
+</html>
